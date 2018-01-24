@@ -1,0 +1,20 @@
+identidock:
+  container_name: identidock
+  build: .
+  ports:
+   - "5000:5000"
+  environment:
+    ENV: DEV
+  volumes:
+    - ./app:/app
+  links:
+    - dnmonster
+    - redis
+
+dnmonster:
+  container_name: dnmonster
+  image: amouat/dnmonster:1.0
+
+redis:
+  container_name: redis
+  image: redis:3.0
